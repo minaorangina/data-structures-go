@@ -54,3 +54,7 @@ func (ll *linkedlist) size() {
 	}
 	fmt.Println(size)
 }
+
+func (ll *linkedlist) isEmpty() {
+	fmt.Println(ll.head == nil)
+}

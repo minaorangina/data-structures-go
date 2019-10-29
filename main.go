@@ -9,4 +9,5 @@ func main() {
 	ll.addNode(7)
 	ll.display()
 	ll.size()
+	ll.isEmpty()
 }
