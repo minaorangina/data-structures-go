@@ -42,3 +42,15 @@ func (ll *linkedlist) display() {
 		fmt.Printf("-> %v\n", currentNode.data)
 	}
 }
+
+func (ll *linkedlist) size() {
+	var size int
+	if ll.head != nil {
+		currentNode := ll.head
+		for currentNode != nil {
+			size++
+			currentNode = currentNode.next
+		}
+	}
+	fmt.Println(size)
+}

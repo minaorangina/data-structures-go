@@ -8,4 +8,5 @@ func main() {
 	ll.addNode(9)
 	ll.addNode(7)
 	ll.display()
+	ll.size()
 }
