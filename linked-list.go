@@ -70,9 +70,20 @@ func (ll *linkedlist) valueAt(location int) int {
 	return currentNode.data
 }
 
-func (ll *linkedlist) front() (int, bool) {
+func (ll *linkedlist) front() (int, error) {
 	if ll.isEmpty() {
-		return 0, false
+		return 0, fmt.Errorf("List is empty")
 	}
-	return ll.head.data, true
+	return ll.head.data, nil
+}
+
+func (ll *linkedlist) back() (int, error) {
+	if ll.isEmpty() {
+		return 0, fmt.Errorf("List is empty")
+	}
+	currentNode := ll.head
+	for currentNode.next != nil {
+		currentNode = currentNode.next
+	}
+	return currentNode.data, nil
 }

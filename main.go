@@ -14,10 +14,17 @@ func main() {
 	fmt.Println(ll.isEmpty())
 	fmt.Println(ll.valueAt(4))
 
-	val, ok := ll.front()
-	if !ok {
-		fmt.Println("List is empty")
+	val, err := ll.front()
+	if err != nil {
+		fmt.Println(err)
 	} else {
 		fmt.Printf("front: %d\n", val)
+	}
+
+	val, err = ll.back()
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("back: %d\n", val)
 	}
 }
