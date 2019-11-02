@@ -12,9 +12,15 @@ func main() {
 	ll.display()
 	fmt.Println(ll.size())
 	fmt.Println(ll.isEmpty())
-	fmt.Println(ll.valueAt(4))
+	index := 4
+	val, err := ll.valueAt(index)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("valueAt %d: %d\n", index, val)
+	}
 
-	val, err := ll.front()
+	val, err = ll.front()
 	if err != nil {
 		fmt.Println(err)
 	} else {

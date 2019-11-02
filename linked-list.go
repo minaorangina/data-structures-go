@@ -59,15 +59,15 @@ func (ll *linkedlist) isEmpty() bool {
 	return ll.head == nil
 }
 
-func (ll *linkedlist) valueAt(location int) int {
-	if location > ll.size() {
-		panic("Index out of range")
+func (ll *linkedlist) valueAt(location int) (int, error) {
+	if location < 0 || location > ll.size() {
+		return 0, fmt.Errorf("Index out of range")
 	}
 	currentNode := ll.head
 	for i := 0; i < location; i++ {
 		currentNode = currentNode.next
 	}
-	return currentNode.data
+	return currentNode.data, nil
 }
 
 func (ll *linkedlist) front() (int, error) {
