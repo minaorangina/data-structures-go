@@ -43,7 +43,7 @@ func (ll *linkedlist) display() {
 	}
 }
 
-func (ll *linkedlist) size() {
+func (ll *linkedlist) size() int {
 	var size int
 	if ll.head != nil {
 		currentNode := ll.head
@@ -52,7 +52,7 @@ func (ll *linkedlist) size() {
 			currentNode = currentNode.next
 		}
 	}
-	fmt.Println(size)
+	return size
 }
 
 func (ll *linkedlist) isEmpty() {

@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	ll := NewLinkedList()
 	ll.addNode(9)
@@ -8,6 +10,5 @@ func main() {
 	ll.addNode(9)
 	ll.addNode(7)
 	ll.display()
-	ll.size()
-	ll.isEmpty()
+	fmt.Println(ll.size())
 }
