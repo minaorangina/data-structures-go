@@ -55,6 +55,24 @@ func (ll *linkedlist) size() int {
 	return size
 }
 
-func (ll *linkedlist) isEmpty() {
-	fmt.Println(ll.head == nil)
+func (ll *linkedlist) isEmpty() bool {
+	return ll.head == nil
+}
+
+func (ll *linkedlist) valueAt(location int) int {
+	if location > ll.size() {
+		panic("Index out of range")
+	}
+	currentNode := ll.head
+	for i := 0; i < location; i++ {
+		currentNode = currentNode.next
+	}
+	return currentNode.data
+}
+
+func (ll *linkedlist) front() (int, bool) {
+	if ll.isEmpty() {
+		return 0, false
+	}
+	return ll.head.data, true
 }
