@@ -33,4 +33,20 @@ func main() {
 	} else {
 		fmt.Printf("back: %d\n", val)
 	}
+
+	index = 3
+	val, err = ll.valueNFromBack(index)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("value[%d]FromBack: %d (expecting 4)\n", index, val)
+	}
+
+	index = 5
+	val, err = ll.valueNFromBack(index)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("value[%d]FromBack: %d (expecting error)\n", index, val)
+	}
 }

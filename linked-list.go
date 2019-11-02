@@ -87,3 +87,12 @@ func (ll *linkedlist) back() (int, error) {
 	}
 	return currentNode.data, nil
 }
+
+func (ll *linkedlist) valueNFromBack(indexFromBack int) (int, error) {
+	if ll.isEmpty() {
+		return 0, fmt.Errorf("List is empty")
+	}
+	indexFromFront := ll.size() - 1 - indexFromBack
+	val, err := ll.valueAt(indexFromFront)
+	return val, err
+}
