@@ -96,3 +96,27 @@ func (ll *linkedlist) valueNFromBack(indexFromBack int) (int, error) {
 	val, err := ll.valueAt(indexFromFront)
 	return val, err
 }
+
+func (ll *linkedlist) pushFront(value int) error {
+	if ll.isEmpty() {
+		return fmt.Errorf("List is empty")
+	}
+	// create new node
+	newNode := &node{data: value}
+	// copy head
+	oldHead := ll.head
+	// point new node to copy
+	newNode.next = oldHead
+	// point head at new node
+	ll.head = newNode
+	return nil
+}
+
+func (ll *linkedlist) popFront() error {
+	if ll.isEmpty() {
+		return fmt.Errorf("List is empty")
+	}
+	// point head to old head next
+	ll.head = ll.head.next
+	return nil
+}

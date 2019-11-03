@@ -45,8 +45,24 @@ func main() {
 	index = 5
 	val, err = ll.valueNFromBack(index)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("valueNFromBack:", err)
 	} else {
 		fmt.Printf("value[%d]FromBack: %d (expecting error)\n", index, val)
+	}
+
+	err = ll.pushFront(78)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("pushFront %d\n", 78)
+		ll.display()
+	}
+
+	err = ll.popFront()
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("popFront")
+		ll.display()
 	}
 }
