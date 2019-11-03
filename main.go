@@ -65,4 +65,20 @@ func main() {
 		fmt.Println("popFront")
 		ll.display()
 	}
+
+	err = ll.pushBack(555)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("pushBack %d\n", 555)
+		ll.display()
+	}
+
+	err = ll.popBack()
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("popBack")
+		ll.display()
+	}
 }

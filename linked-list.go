@@ -120,3 +120,34 @@ func (ll *linkedlist) popFront() error {
 	ll.head = ll.head.next
 	return nil
 }
+
+func (ll *linkedlist) pushBack(value int) error {
+	if ll.isEmpty() {
+		return fmt.Errorf("List is empty")
+	}
+
+	newNode := &node{data: value}
+
+	currentNode := ll.head
+	for currentNode.next != nil {
+		currentNode = currentNode.next
+	}
+	currentNode.next = newNode
+	return nil
+}
+
+func (ll *linkedlist) popBack() error {
+	if ll.isEmpty() {
+		return fmt.Errorf("List is empty")
+	}
+	if ll.size() == 1 {
+		return fmt.Errorf("Cannot pop back on a list with only one node")
+	}
+
+	currentNode := ll.head
+	for currentNode.next != nil && currentNode.next.next != nil {
+		currentNode = currentNode.next
+	}
+	currentNode.next = nil
+	return nil
+}
