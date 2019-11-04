@@ -81,4 +81,12 @@ func main() {
 		fmt.Println("popBack")
 		ll.display()
 	}
+
+	err = ll.insert(2, 88)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("insert")
+		ll.display()
+	}
 }
