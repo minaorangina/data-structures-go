@@ -105,4 +105,12 @@ func main() {
 		fmt.Printf("delete @ index %d (expecting 9 to disappear)\n", 2)
 		ll.display()
 	}
+
+	err = ll.reverse()
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("reverse(expecting 7, 9, 4)")
+		ll.display()
+	}
 }

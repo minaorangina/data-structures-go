@@ -189,3 +189,27 @@ func (ll *linkedlist) delete(index int) error {
 	currentNode.next = currentNode.next.next
 	return nil
 }
+
+func (ll *linkedlist) reverse() error {
+	if ll.isEmpty() {
+		return fmt.Errorf("List is empty")
+	}
+	if ll.size() == 1 {
+		return nil
+	}
+	cursor := ll.head
+	currentNode := ll.head
+	nextNode := ll.head.next
+
+	for nextNode.next != nil {
+		currentNode = nextNode
+		nextNode = nextNode.next
+		currentNode.next = cursor
+		cursor = currentNode
+	}
+	nextNode.next = currentNode
+	ll.head.next = nil
+	ll.head = nextNode
+
+	return nil
+}
