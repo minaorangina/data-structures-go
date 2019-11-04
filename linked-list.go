@@ -171,3 +171,21 @@ func (ll *linkedlist) insert(index, value int) error {
 	newNode.next = nextNode
 	return nil
 }
+
+func (ll *linkedlist) delete(index int) error {
+	if ll.isEmpty() {
+		return fmt.Errorf("List is empty")
+	}
+	if index == 0 {
+		err := ll.popFront()
+		if err != nil {
+			return err
+		}
+	}
+	currentNode := ll.head
+	for i := 0; i < index-1; i++ {
+		currentNode = currentNode.next
+	}
+	currentNode.next = currentNode.next.next
+	return nil
+}

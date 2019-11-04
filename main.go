@@ -89,4 +89,20 @@ func main() {
 		fmt.Println("insert")
 		ll.display()
 	}
+
+	err = ll.delete(2)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("delete @ index %d (expecting 88 to disappear)\n", 2)
+		ll.display()
+	}
+
+	err = ll.delete(0)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("delete @ index %d (expecting 9 to disappear)\n", 2)
+		ll.display()
+	}
 }
