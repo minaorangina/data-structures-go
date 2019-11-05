@@ -213,3 +213,25 @@ func (ll *linkedlist) reverse() error {
 
 	return nil
 }
+
+func (ll *linkedlist) deleteFirstOccurrence(value int) (bool, error) {
+	if ll.isEmpty() {
+		return false, fmt.Errorf("List is empty")
+	}
+	if ll.head.data == value {
+		err := ll.popFront()
+		if err != nil {
+			return false, err
+		}
+	}
+
+	currentNode := ll.head
+	for currentNode.next != nil {
+		if currentNode.next.data == value {
+			currentNode.next = currentNode.next.next
+			return true, nil
+		}
+		currentNode = currentNode.next
+	}
+	return false, nil
+}

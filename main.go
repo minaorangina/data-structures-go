@@ -113,4 +113,24 @@ func main() {
 		fmt.Println("reverse(expecting 7, 9, 4)")
 		ll.display()
 	}
+
+	deleted, err := ll.deleteFirstOccurrence(9)
+	if err != nil {
+		fmt.Println(err)
+	} else if deleted {
+		fmt.Println("delete first occurrence(expecting true: 7, 4)")
+		ll.display()
+	} else {
+		fmt.Printf("\tdelete first occurrence did not delete (this was unexpected)\n")
+	}
+
+	deleted, err = ll.deleteFirstOccurrence(55)
+	if err != nil {
+		fmt.Println(err)
+	} else if deleted {
+		fmt.Printf("\tdelete first occurrence deleted (this was unexpected)\n")
+	} else {
+		fmt.Printf("delete first occurrence did not find occurrence of %d, as expected\n", 55)
+		ll.display()
+	}
 }
