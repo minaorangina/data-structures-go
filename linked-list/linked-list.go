@@ -1,4 +1,4 @@
-package main
+package linkedlist
 
 import "fmt"
 
@@ -8,16 +8,16 @@ type node struct {
 	next *node
 }
 
-type linkedlist struct {
+type LinkedList struct {
 	head *node
 }
 
 // NewLinkedList initialises a new linked list
-func NewLinkedList() linkedlist {
-	return linkedlist{}
+func NewLinkedList() LinkedList {
+	return LinkedList{}
 }
 
-func (ll *linkedlist) addNode(val int) {
+func (ll *LinkedList) AddNode(val int) {
 	newNode := &node{data: val}
 	if ll.head == nil {
 		ll.head = newNode
@@ -32,7 +32,7 @@ func (ll *linkedlist) addNode(val int) {
 	currentNode.next = newNode
 }
 
-func (ll *linkedlist) display() {
+func (ll *LinkedList) Display() {
 	if ll.head == nil {
 		fmt.Printf("List is empty.\n")
 		return
@@ -43,7 +43,7 @@ func (ll *linkedlist) display() {
 	}
 }
 
-func (ll *linkedlist) size() int {
+func (ll *LinkedList) Size() int {
 	var size int
 	if ll.head != nil {
 		currentNode := ll.head
@@ -55,12 +55,12 @@ func (ll *linkedlist) size() int {
 	return size
 }
 
-func (ll *linkedlist) isEmpty() bool {
+func (ll *LinkedList) IsEmpty() bool {
 	return ll.head == nil
 }
 
-func (ll *linkedlist) valueAt(location int) (int, error) {
-	if location < 0 || location > ll.size() {
+func (ll *LinkedList) ValueAt(location int) (int, error) {
+	if location < 0 || location > ll.Size() {
 		return 0, fmt.Errorf("Index out of range")
 	}
 	currentNode := ll.head
@@ -70,15 +70,15 @@ func (ll *linkedlist) valueAt(location int) (int, error) {
 	return currentNode.data, nil
 }
 
-func (ll *linkedlist) front() (int, error) {
-	if ll.isEmpty() {
+func (ll *LinkedList) Front() (int, error) {
+	if ll.IsEmpty() {
 		return 0, fmt.Errorf("List is empty")
 	}
 	return ll.head.data, nil
 }
 
-func (ll *linkedlist) back() (int, error) {
-	if ll.isEmpty() {
+func (ll *LinkedList) Back() (int, error) {
+	if ll.IsEmpty() {
 		return 0, fmt.Errorf("List is empty")
 	}
 	currentNode := ll.head
@@ -88,17 +88,17 @@ func (ll *linkedlist) back() (int, error) {
 	return currentNode.data, nil
 }
 
-func (ll *linkedlist) valueNFromBack(indexFromBack int) (int, error) {
-	if ll.isEmpty() {
+func (ll *LinkedList) ValueNFromBack(indexFromBack int) (int, error) {
+	if ll.IsEmpty() {
 		return 0, fmt.Errorf("List is empty")
 	}
-	indexFromFront := ll.size() - 1 - indexFromBack
-	val, err := ll.valueAt(indexFromFront)
+	indexFromFront := ll.Size() - 1 - indexFromBack
+	val, err := ll.ValueAt(indexFromFront)
 	return val, err
 }
 
-func (ll *linkedlist) pushFront(value int) error {
-	if ll.isEmpty() {
+func (ll *LinkedList) PushFront(value int) error {
+	if ll.IsEmpty() {
 		return fmt.Errorf("List is empty")
 	}
 	// create new node
@@ -112,8 +112,8 @@ func (ll *linkedlist) pushFront(value int) error {
 	return nil
 }
 
-func (ll *linkedlist) popFront() error {
-	if ll.isEmpty() {
+func (ll *LinkedList) PopFront() error {
+	if ll.IsEmpty() {
 		return fmt.Errorf("List is empty")
 	}
 	// point head to old head next
@@ -121,8 +121,8 @@ func (ll *linkedlist) popFront() error {
 	return nil
 }
 
-func (ll *linkedlist) pushBack(value int) error {
-	if ll.isEmpty() {
+func (ll *LinkedList) PushBack(value int) error {
+	if ll.IsEmpty() {
 		return fmt.Errorf("List is empty")
 	}
 
@@ -136,11 +136,11 @@ func (ll *linkedlist) pushBack(value int) error {
 	return nil
 }
 
-func (ll *linkedlist) popBack() error {
-	if ll.isEmpty() {
+func (ll *LinkedList) PopBack() error {
+	if ll.IsEmpty() {
 		return fmt.Errorf("List is empty")
 	}
-	if ll.size() == 1 {
+	if ll.Size() == 1 {
 		return fmt.Errorf("Cannot pop back on a list with only one node")
 	}
 
@@ -152,12 +152,12 @@ func (ll *linkedlist) popBack() error {
 	return nil
 }
 
-func (ll *linkedlist) insert(index, value int) error {
-	if ll.isEmpty() {
+func (ll *LinkedList) Insert(index, value int) error {
+	if ll.IsEmpty() {
 		return fmt.Errorf("List is empty")
 	}
 	if index == 0 {
-		return ll.pushFront(value)
+		return ll.PushFront(value)
 	}
 
 	currentNode := ll.head
@@ -172,12 +172,12 @@ func (ll *linkedlist) insert(index, value int) error {
 	return nil
 }
 
-func (ll *linkedlist) delete(index int) error {
-	if ll.isEmpty() {
+func (ll *LinkedList) Delete(index int) error {
+	if ll.IsEmpty() {
 		return fmt.Errorf("List is empty")
 	}
 	if index == 0 {
-		err := ll.popFront()
+		err := ll.PopFront()
 		if err != nil {
 			return err
 		}
@@ -190,11 +190,11 @@ func (ll *linkedlist) delete(index int) error {
 	return nil
 }
 
-func (ll *linkedlist) reverse() error {
-	if ll.isEmpty() {
+func (ll *LinkedList) Reverse() error {
+	if ll.IsEmpty() {
 		return fmt.Errorf("List is empty")
 	}
-	if ll.size() == 1 {
+	if ll.Size() == 1 {
 		return nil
 	}
 	cursor := ll.head
@@ -214,12 +214,12 @@ func (ll *linkedlist) reverse() error {
 	return nil
 }
 
-func (ll *linkedlist) deleteFirstOccurrence(value int) (bool, error) {
-	if ll.isEmpty() {
+func (ll *LinkedList) DeleteFirstOccurrence(value int) (bool, error) {
+	if ll.IsEmpty() {
 		return false, fmt.Errorf("List is empty")
 	}
 	if ll.head.data == value {
-		err := ll.popFront()
+		err := ll.PopFront()
 		if err != nil {
 			return false, err
 		}
