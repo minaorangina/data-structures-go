@@ -18,6 +18,22 @@ func AssertNoError(t *testing.T, err error) {
 	}
 }
 
+func AssertNotNil(t *testing.T, v interface{}) {
+	t.Helper()
+
+	if v == nil {
+		t.Fatalf("unexpected nil value")
+	}
+}
+
+func AssertErrored(t *testing.T, err error) {
+	t.Helper()
+
+	if err == nil {
+		t.Fatalf("expected an error, but didn't get one")
+	}
+}
+
 func AssertTrue(t *testing.T, got bool) {
 	t.Helper()
 

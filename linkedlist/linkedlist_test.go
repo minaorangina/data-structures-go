@@ -39,7 +39,7 @@ func TestLinkedList(t *testing.T) {
 
 	index = 5
 	val, err = ll.ValueNFromBack(index)
-	utils.AssertNoError(t, err)
+	utils.AssertErrored(t, err)
 	fmt.Printf("value[%d]FromBack: %d (expecting error)\n", index, val)
 
 	err = ll.PushFront(78)
